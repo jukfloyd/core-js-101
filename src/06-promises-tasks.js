@@ -83,14 +83,12 @@ function processAllPromises(array) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
-  /*
+function getFastestPromise(array) {
   return new Promise((resolve, reject) => {
-    Promise.any(array)
+    Promise.race(array)
       .then((value) => resolve(value))
       .catch((err) => reject(err));
-  }); */
+  });
 }
 
 /**
