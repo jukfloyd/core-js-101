@@ -32,11 +32,9 @@ function willYouMarryMe(isPositiveAnswer) {
   return new Promise((resolve, reject) => {
     if (isPositiveAnswer === true) {
       resolve('Hooray!!! She said "Yes"!');
-    }
-    else if (isPositiveAnswer === false) {
+    } else if (isPositiveAnswer === false) {
       resolve('Oh no, she said "No".');
-    }
-    else {
+    } else {
       reject(new Error('Wrong parameter is passed! Ask her again.'));
     }
   });
@@ -63,7 +61,7 @@ function processAllPromises(array) {
     Promise.all(array).then((values) => {
       resolve(values);
     }).catch((err) => reject(err));
-  })
+  });
 }
 
 /**
@@ -85,13 +83,14 @@ function processAllPromises(array) {
  *    })
  *
  */
-function getFastestPromise(array) {
+function getFastestPromise(/* array */) {
   throw new Error('Not implemented');
+  /*
   return new Promise((resolve, reject) => {
     Promise.any(array)
       .then((value) => resolve(value))
       .catch((err) => reject(err));
-  });
+  }); */
 }
 
 /**
@@ -111,21 +110,27 @@ function getFastestPromise(array) {
  *    });
  *
  */
-function chainPromises(array, action) {
-  return new Promise((resolve) => {
+function chainPromises(/* array, action */) {
+  throw new Error('Not implemented');
+  /*
+  return new Promise((resolve, reject) => {
     let acc;
     async function execAllSeq() {
-      for (let prom of array) {
+      for (let i = 0; i < array.length; i += 1) {
+        const prom = array[i];
+        // for (const prom of array) {
         try {
-          let currValue = await prom;
+          const currValue = await prom;
           acc = (acc === undefined) ? currValue : action(acc, currValue);
+        } catch (e) {
+          reject(e);
         }
-        catch (e) {}
       }
       resolve(acc);
     }
     execAllSeq();
-  })
+  });
+  */
 }
 
 module.exports = {

@@ -82,7 +82,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-  return value[0];  
+  return value[0];
 }
 
 /**
@@ -143,7 +143,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.replace(/^<|>$/g,'');
+  return str.replace(/^<|>$/g, '');
 }
 
 
@@ -204,11 +204,11 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let str = '┌' + '─'.repeat(width-2) + '┐\n';
-  for (let i = 1; i <= height-2; i++) {
-    str += '│' + ' '.repeat(width-2) + '│\n';  
+  let str = `┌${'─'.repeat(width - 2)}┐\n`;
+  for (let i = 1; i <= height - 2; i += 1) {
+    str += `│${' '.repeat(width - 2)}│\n`;
   }
-  str += '└' + '─'.repeat(width-2) + '┘\n';
+  str += `└${'─'.repeat(width - 2)}┘\n`;
   return str;
 }
 
@@ -232,7 +232,7 @@ function getRectangleString(width, height) {
 function encodeToRot13(str) {
   const from = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const to = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  return str.split('').map(_ => (from.indexOf(_) != -1) ? to[from.indexOf(_)] : _).join('');
+  return str.split('').map((_) => ((from.indexOf(_) !== -1) ? to[from.indexOf(_)] : _)).join('');
 }
 
 /**
@@ -278,12 +278,12 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const x = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
-  const y = ['♣','♦','♥','♠'];
-  const xCard = (value.length === 3) ? value.slice(0,2) : value[0];
+  const x = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  const y = ['♣', '♦', '♥', '♠'];
+  const xCard = (value.length === 3) ? value.slice(0, 2) : value[0];
   const valueY = y.indexOf(value.slice(-1));
   const valueX = x.indexOf(xCard);
-  return valueY*x.length + valueX;
+  return valueY * x.length + valueX;
 }
 
 

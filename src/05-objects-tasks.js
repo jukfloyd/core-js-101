@@ -22,12 +22,12 @@
  */
 function Rectangle(width, height) {
   const rect = {
-    width: width,
-    height: height,
-    getArea: function() {
-      return this.width*this.height;
-    }
-  }
+    width,
+    height,
+    getArea() {
+      return this.width * this.height;
+    },
+  };
   return rect;
 }
 
